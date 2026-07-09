@@ -1,3 +1,5 @@
+import random
+
 # Each sequence is a "conversation"
 # Think of each number as a Morse token
 data = [
@@ -8,65 +10,51 @@ data = [
     [4, 5, 2, 3],
 ]
 
-tally = {}
-
-# for seq in data:
-#     for i in range(len(seq) - 1):
-#         tally[f"{seq[i]} -> {seq[i+1]}"] = 0
-
-# for seq in data:
-#     for i in range(len(seq) - 1):
-#         tally[f"{seq[i]} -> {seq[i+1]}"] += 1
+bigram_tally = {}
 
 for seq in data:
     for i in range(len(seq) - 1):
-        key = f"{seq[i]} -> {seq[i+1]}"
-        if key not in tally:
-            tally[key] = 0
-        tally[key] += 1
-
-# print(tally)
-
-import random
+        key: tuple[int, int] = (seq[i], seq[i + 1])
+        if key not in bigram_tally:
+            bigram_tally[key] = 0
+        bigram_tally[key] += 1
 
 
-def predict(n: int) -> int:
+def bigram_predict(n: int) -> int:
 
-    possible_keys: list[str] = []
-    # Find all the keys with first == n
-    for key in tally.keys():
-        first: str = key[0]
-        if str(n) == first:
-            possible_keys.append(key)
+    prediction_count_pair: list[tuple[int, int]] = []
+    for key in bigram_tally.keys():
+        if n == int(key[0]):  # Look at the very first token
+            # Append the prediction and the count
+            prediction_count_pair.append((int(key[-1]), bigram_tally[key]))
 
+    final_prediction: int = None
     highest_count: int = -1
-    prediction: int = None
-
-    a = list(map(lambda key: (key[-1], tally[key]), possible_keys))
-
-    for prediction_a, count in a:
+    for prediction, count in prediction_count_pair:
         if highest_count < count:
             highest_count = count
-            prediction = int(prediction_a)
-        elif highest_count == count:
-            prediction = random.choice(list(map(lambda pair: int(pair[0]), a)))
+            final_prediction = prediction
+        elif highest_count == count:  # it's a tie, pick randomly
+            final_prediction = random.choice(
+                list(map(lambda p: p[0], prediction_count_pair))
+            )
 
-    return prediction
+    return final_prediction
 
 
-print(predict(0))  # 1
-print(predict(1))  # 2
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
-print(predict(5))  # not sure, 2 or 3
+print(bigram_predict(0))  # 1
+print(bigram_predict(1))  # 2
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
+print(bigram_predict(5))  # not sure, 2 or 3
