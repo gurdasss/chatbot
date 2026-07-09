@@ -50,7 +50,7 @@ def bigram_sample(n: int) -> int:
         count: float = p[-1]
 
         # find the first prediction whose cumulative_count
-        # is below the random sample we got
+        # is above the random sample we got
         if random_sample < count:
             final_prediction = prediction
             break
