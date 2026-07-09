@@ -17,76 +17,109 @@ data = [
 ]
 
 trigram_tally = {}
-bigram_tally = {}
 
-# Build trigram model
+# First pair and count things up
 for seq in data:
     for i in range(len(seq) - 2):
-        # Keeping the keys un-formatted
-        # So that I can easily fetch tokens
-        key: str = f"{seq[i]}{seq[i+1]}{seq[i+2]}"
+        key: tuple[int, int, int] = (seq[i], seq[i + 1], seq[i + 2])
         if key not in trigram_tally:
             trigram_tally[key] = 0
-
         trigram_tally[key] += 1
 
-# Build bigram model
+
+# Second, build the number line for each key
+trigram_key_no_line = {}
+
+for item in trigram_tally.items():
+    key: tuple[int, int] = (item[0][0], item[0][1])
+    prediction: int = item[0][-1]
+    current_count: int = item[-1]
+
+    # First create a key with an initial pair as its value
+    if key not in trigram_key_no_line:
+        trigram_key_no_line[key] = [(prediction, current_count)]
+    else:
+        cumulative_count: int = trigram_key_no_line[key][-1][-1]
+        trigram_key_no_line[key] += [(prediction, current_count + cumulative_count)]
+
+
+def trigram_sample(a: int, b: int) -> int:
+    key: tuple[int, int] = (a, b)
+    if key not in trigram_key_no_line:
+        return -1
+
+    cumulative_count: int = trigram_key_no_line[key][-1][-1]
+    # Random sample between 0 to cumulative_count (excluding)
+    random_sample: float = random.uniform(0, cumulative_count)
+    final_prediction: int = None
+
+    for p in trigram_key_no_line[key]:
+        prediction: int = p[0]
+        count: float = p[-1]
+
+        # find the first prediction whose cumulative_count
+        # is above the random sample we got
+        if random_sample < count:
+            final_prediction = prediction
+            break
+
+    return final_prediction
+
+
+def trigram_predict(a: int, b: int) -> int:
+    return trigram_sample(a, b)
+
+
+bigram_tally = {}
+
+# First pair and count things up
 for seq in data:
     for i in range(len(seq) - 1):
-        key = f"{seq[i]} -> {seq[i+1]}"
+        key: tuple[int, int] = (seq[i], seq[i + 1])
         if key not in bigram_tally:
             bigram_tally[key] = 0
         bigram_tally[key] += 1
 
+# Second, build the number line for each key
+bigram_key_no_line = {}
 
-def trigram_predict(a: int, b: int) -> int:
+for item in bigram_tally.items():
+    key: int = item[0][0]
+    prediction: int = item[0][-1]
+    current_count: int = item[-1]
 
-    prediction_count_pair: list[tuple[int, int]] = []
-    for key in trigram_tally.keys():
-        first: int = int(key[0])
-        second: int = int(key[1])
+    # First create a key with an initial pair as its value
+    if key not in bigram_key_no_line:
+        bigram_key_no_line[key] = [(prediction, current_count)]
+    else:
+        cumulative_count: int = bigram_key_no_line[key][-1][-1]
+        bigram_key_no_line[key] += [(prediction, current_count + cumulative_count)]
 
-        # We need the exact two sequences
-        if a == first and b == second:
-            # Append the prediction and the count
-            prediction_count_pair.append((int(key[-1]), trigram_tally[key]))
 
+def bigram_sample(n: int) -> int:
+    if n not in bigram_key_no_line:
+        return -1
+
+    cumulative_count: int = bigram_key_no_line[n][-1][-1]
+    # Random sample between 0 to cumulative_count (excluding)
+    random_sample: float = random.uniform(0, cumulative_count)
     final_prediction: int = None
-    highest_count: int = -1
-    for prediction, count in prediction_count_pair:
-        if highest_count < count:
-            highest_count = count
+
+    for p in bigram_key_no_line[n]:
+        prediction: int = p[0]
+        count: float = p[-1]
+
+        # find the first prediction whose cumulative_count
+        # is above the random sample we got
+        if random_sample < count:
             final_prediction = prediction
-        elif highest_count == count:  # it's a tie, pick randomly
-            final_prediction = random.choice(
-                list(map(lambda p: p[0], prediction_count_pair))
-            )
+            break
 
     return final_prediction
 
 
 def bigram_predict(n: int) -> int:
-
-    possible_keys: list[str] = []
-    # Find all the keys with first == n
-    for key in bigram_tally.keys():
-        first: str = key[0]
-        if str(n) == first:
-            possible_keys.append(key)
-
-    highest_count: int = -1
-    prediction: int = None
-
-    a = list(map(lambda key: (key[-1], bigram_tally[key]), possible_keys))
-
-    for prediction_a, count in a:
-        if highest_count < count:
-            highest_count = count
-            prediction = int(prediction_a)
-        elif highest_count == count:
-            prediction = random.choice(list(map(lambda pair: int(pair[0]), a)))
-
-    return prediction
+    return bigram_sample(n)
 
 
 def generate() -> None:
@@ -96,12 +129,12 @@ def generate() -> None:
     b: int = 1
     prediction: int = trigram_predict(a, b)
 
-    for i in range(10):
+    for _ in range(10):
 
         # if we run out of trigram prediction
         # then we'll use the last element and
         # predict using bigram_predict
-        if prediction == None:
+        if prediction == -1:
             prediction = bigram_predict(b)
 
         print(f"({a}, {b}) -> {prediction}")
@@ -111,4 +144,3 @@ def generate() -> None:
 
 
 generate()
-print(f"\n{trigram_tally}")

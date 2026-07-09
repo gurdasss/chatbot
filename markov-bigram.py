@@ -10,7 +10,7 @@ data = [
     [4, 5, 2, 3],
 ]
 
-bigram_tally: dict = {}
+bigram_tally = {}
 
 # First pair and count things up
 for seq in data:
@@ -21,7 +21,7 @@ for seq in data:
         bigram_tally[key] += 1
 
 # Second, build the number line for each key
-key_no_line = {}
+bigram_key_no_line = {}
 
 for item in bigram_tally.items():
     key: int = item[0][0]
@@ -29,23 +29,23 @@ for item in bigram_tally.items():
     current_count: int = item[-1]
 
     # First create a key with an initial pair as its value
-    if key not in key_no_line:
-        key_no_line[key] = [(prediction, current_count)]
+    if key not in bigram_key_no_line:
+        bigram_key_no_line[key] = [(prediction, current_count)]
     else:
-        cumulative_count: int = key_no_line[key][-1][-1]
-        key_no_line[key] += [(prediction, current_count + cumulative_count)]
+        cumulative_count: int = bigram_key_no_line[key][-1][-1]
+        bigram_key_no_line[key] += [(prediction, current_count + cumulative_count)]
 
 
 def bigram_sample(n: int) -> int:
-    if n not in key_no_line:
+    if n not in bigram_key_no_line:
         return -1
 
-    cumulative_count: int = key_no_line[n][-1][-1]
+    cumulative_count: int = bigram_key_no_line[n][-1][-1]
     # Random sample between 0 to cumulative_count (excluding)
     random_sample: float = random.uniform(0, cumulative_count)
     final_prediction: int = None
 
-    for p in key_no_line[n]:
+    for p in bigram_key_no_line[n]:
         prediction: int = p[0]
         count: float = p[-1]
 
