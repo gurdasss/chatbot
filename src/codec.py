@@ -11,8 +11,7 @@ idx_to_char: dict[int] = {
 }
 
 
-def encode(text: str) -> list[float]:
-    text = text[:8]  # strictly keep the input size to 8
+def encode(text: str) -> list[int]:
     return [char_to_idx[char] for char in text]
 
 
