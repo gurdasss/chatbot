@@ -1,4 +1,4 @@
-from random import uniform
+from random import uniform, random
 
 MAX_WEIGHT: float = 0.5
 MIN_WEIGHT: float = -0.5
@@ -58,3 +58,39 @@ def forward(
     # Return both (you'll need hidden values later for training)
 
     return (hidden_values, output_scores)
+
+
+def predict(output_scores: list[float]) -> int:
+
+    # Right now the output scores can be negative, zero, or positive
+    # Probabilities can't be negative and so, we need to convert it to
+    # positive first with softmax method
+
+    # Step 1: `e`(2.718) to the power of each score
+    scores_raise_by_e: list[float] = list(
+        map(lambda score: 2.718**score, output_scores)
+    )
+    # Step 2: accumulate into final sum
+    final_sum: float = sum(scores_raise_by_e)
+    # Step 3: divide the list by the final sum
+    scores_raise_by_e = list(map(lambda score: score / final_sum, scores_raise_by_e))
+
+    # random sample between [0, 1)
+    random_sample: float = random()
+    prediction: int = None
+    cumulative_probability: float = scores_raise_by_e[0]
+
+    for i in range(len(scores_raise_by_e) - 1):
+
+        # find the first prediction who
+        # is above the random sample we got
+        if cumulative_probability > random_sample:
+            prediction = i
+            break
+
+        cumulative_probability += scores_raise_by_e[i + 1]
+
+    if prediction is None:
+        prediction = len(scores_raise_by_e) - 1
+
+    return prediction

@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from src.network import (
     CONTEXT_WINDOW,
     MAX_WEIGHT,
@@ -7,6 +9,7 @@ from src.network import (
     forward,
     gen_weights,
     init_weights,
+    predict,
 )
 
 
@@ -125,3 +128,67 @@ def test_forward_returns_hidden_values_and_output_scores_as_tuple():
 
     assert isinstance(result, tuple)
     assert len(result) == 2
+
+
+# Equal scores -> softmax gives each of the 4 options a 0.25 probability,
+# so the cumulative thresholds land at 0.25, 0.5, 0.75, 1.0.
+EQUAL_SCORES = [0.0, 0.0, 0.0, 0.0]
+
+
+@patch("src.network.random")
+def test_predict_picks_first_bucket_for_low_sample(mock_random):
+    mock_random.return_value = 0.1  # below cumulative 0.25
+    assert predict(EQUAL_SCORES) == 0
+
+
+@patch("src.network.random")
+def test_predict_picks_second_bucket(mock_random):
+    mock_random.return_value = 0.3  # between 0.25 and 0.5
+    assert predict(EQUAL_SCORES) == 1
+
+
+@patch("src.network.random")
+def test_predict_picks_third_bucket(mock_random):
+    mock_random.return_value = 0.6  # between 0.5 and 0.75
+    assert predict(EQUAL_SCORES) == 2
+
+
+@patch("src.network.random")
+def test_predict_falls_back_to_last_bucket_when_sample_near_one(mock_random):
+    # cumulative probability never exceeds a sample this close to 1.0,
+    # so predict() should fall back to the last index.
+    mock_random.return_value = 0.999999
+    assert predict(EQUAL_SCORES) == 3
+
+
+def test_predict_single_score_always_returns_zero_index():
+    # only one possible outcome, regardless of the random sample drawn
+    assert predict([0.0]) == 0
+    assert predict([42.0]) == 0
+    assert predict([-42.0]) == 0
+
+
+def test_predict_returns_index_within_bounds_over_many_trials():
+    scores = [0.1, -2.0, 3.0, 0.0, 1.5]
+    for _ in range(200):
+        prediction = predict(scores)
+        assert isinstance(prediction, int)
+        assert 0 <= prediction < len(scores)
+
+
+def test_predict_strongly_favors_the_highest_score():
+    # one score dominates, so softmax assigns it near-certain probability
+    scores = [100.0, 0.0, 0.0, 0.0]
+    predictions = [predict(scores) for _ in range(200)]
+    assert predictions.count(0) == 200
+
+
+def test_predict_with_real_forward_output_is_a_valid_token_index():
+    inputs = [1, 2, 3, 4, 5, 6, 7, 8]
+    hidden_weights, output_weights = init_weights()
+    _, output_scores = forward(inputs, hidden_weights, output_weights)
+
+    prediction = predict(output_scores)
+
+    assert isinstance(prediction, int)
+    assert 0 <= prediction < NO_OF_TOKENS
