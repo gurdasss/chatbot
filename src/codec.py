@@ -21,7 +21,3 @@ def decode(tokens: list[int]) -> str:
     for token in tokens:
         output += idx_to_char[token]
     return output
-
-
-print(decode(encode("how you")))
-# print(char_to_idx)
