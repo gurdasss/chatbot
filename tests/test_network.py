@@ -4,6 +4,7 @@ from src.network import (
     MIN_WEIGHT,
     NO_OF_HIDDEN_NEURONS,
     NO_OF_TOKENS,
+    forward,
     gen_weights,
     init_weights,
 )
@@ -77,3 +78,50 @@ def test_gen_weights_returns_requested_count_within_bounds():
 
 def test_gen_weights_zero_length():
     assert gen_weights(0) == []
+
+
+def test_forward_output_shapes_with_real_weights():
+    inputs = [1, 2, 3, 4, 5, 6, 7, 8]
+    hidden_weights, output_weights = init_weights()
+    hidden_values, output_scores = forward(inputs, hidden_weights, output_weights)
+
+    assert len(hidden_values) == NO_OF_HIDDEN_NEURONS
+    assert len(output_scores) == NO_OF_TOKENS
+    assert all(isinstance(v, float) for v in hidden_values)
+    assert all(isinstance(v, float) for v in output_scores)
+
+
+def test_forward_computes_correct_dot_products():
+    inputs = [1, 2, 3]
+    hidden_weights = [
+        [1.0, 0.0, 0.0],  # picks out input[0]
+        [0.0, 1.0, 1.0],  # sums input[1] + input[2]
+    ]
+    output_weights = [
+        [1.0, 1.0],  # sums both hidden values
+        [2.0, 0.0],  # doubles first hidden value only
+    ]
+
+    hidden_values, output_scores = forward(inputs, hidden_weights, output_weights)
+
+    assert hidden_values == [1.0, 5.0]  # [1*1, 2*1 + 3*1]
+    assert output_scores == [6.0, 2.0]  # [1+5, 2*1]
+
+
+def test_forward_all_zero_inputs_produce_zero_scores():
+    inputs = [0] * CONTEXT_WINDOW
+    hidden_weights, output_weights = init_weights()
+
+    hidden_values, output_scores = forward(inputs, hidden_weights, output_weights)
+
+    assert hidden_values == [0.0] * NO_OF_HIDDEN_NEURONS
+    assert output_scores == [0.0] * NO_OF_TOKENS
+
+
+def test_forward_returns_hidden_values_and_output_scores_as_tuple():
+    inputs = [1, 2, 3, 4, 5, 6, 7, 8]
+    hidden_weights, output_weights = init_weights()
+    result = forward(inputs, hidden_weights, output_weights)
+
+    assert isinstance(result, tuple)
+    assert len(result) == 2
