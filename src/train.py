@@ -11,7 +11,7 @@ from src.network import (
     predict,
 )
 
-LEARNING_RATE: float = 0.001
+LEARNING_RATE: float = 0.0001
 
 
 def train_one_example(
@@ -56,10 +56,16 @@ def train_one_example(
     # Step 7: backpropagate errors to hidden layer
     hidden_errors = []
     for j in range(NO_OF_HIDDEN_NEURONS):
-        error_sum = 0
-        for i in range(NO_OF_TOKENS):
-            error_sum += errors[i] * output_weights[i][j]
-        hidden_errors.append(error_sum)
+        # if a hidden neuron's output was clipped to zero,
+        # its error should also be zero since it didn't
+        # contribute anything.
+        if hidden_values[j] == 0:
+            hidden_errors.append(0)
+        else:
+            error_sum = 0
+            for i in range(NO_OF_TOKENS):
+                error_sum += errors[i] * output_weights[i][j]
+            hidden_errors.append(error_sum)
 
     # Step 8: adjust hidden weights
     for j in range(NO_OF_HIDDEN_NEURONS):
@@ -85,10 +91,10 @@ def generate(seed_text, hidden_weights, output_weights, length=20):
 
 def main() -> None:
     hidden_weights, output_weights = init_weights()
-    text = "how are you doing today i am doing well thank you"
+    text = "hello how are you-i am doing well thank you-how is your day going-my day is going great-what do you like to do-i like to read and code-that sounds like fun-it is really fun indeed"
     pairs = make_pairs(text)
 
-    for _ in range(5000):
+    for _ in range(2000):
         for input_tokens, expected in pairs:
             train_one_example(input_tokens, expected, hidden_weights, output_weights)
 

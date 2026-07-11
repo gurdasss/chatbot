@@ -42,6 +42,9 @@ def forward(
                 )
             ]
         )
+        # That's called ReLU. It prevents negative values from
+        # cascading through the network and destabilizing everything.
+        neuron_output = max(0.0, neuron_output)
         hidden_values.append(neuron_output)
 
     output_scores: list[float] = []
