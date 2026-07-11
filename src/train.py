@@ -1,10 +1,9 @@
-from math import exp
+import numpy as np
 
 from src.codec import encode, idx_to_char
 from src.dataset import make_pairs
 from src.network import (
     CONTEXT_WINDOW,
-    NO_OF_HIDDEN_NEURONS,
     NO_OF_TOKENS,
     forward,
     init_weights,
@@ -17,8 +16,8 @@ LEARNING_RATE: float = 0.0001
 def train_one_example(
     encoded_inputs: list[int],
     expected_output: int,
-    hidden_weights: list[list[float]],
-    output_weights: list[list[float]],
+    hidden_weights: np.ndarray,
+    output_weights: np.ndarray,
 ) -> None:
     hidden_values, output_scores = forward(
         encoded_inputs, hidden_weights, output_weights
@@ -28,52 +27,35 @@ def train_one_example(
     # Probabilities can't be negative and so, we need to convert it to
     # positive first with softmax method
 
-    max_score = max(output_scores)
-    scores_raise_by_e: list[float] = [exp(score - max_score) for score in output_scores]
-
-    # Step 1: `e`(2.718) to the power of each score
-    # scores_raise_by_e = list(map(lambda score: 2.718**score, output_scores))
+    # Step 1: `e`(2.718) to the power of every score at once
+    max_score = np.max(output_scores)
+    probabilities: np.ndarray = np.exp(output_scores - max_score)
     # Step 2: accumulate into final sum
-    final_sum: float = sum(scores_raise_by_e)
-    # Step 3: divide the list by the final sum
-    scores_raise_by_e = list(map(lambda score: score / final_sum, scores_raise_by_e))
+    final_sum: float = np.sum(probabilities)
+    # Step 3: divide every score by the final sum
+    probabilities = probabilities / final_sum
 
-    # Build the target list with all zeros except the index at expected output
-    targets: list[int] = [0] * NO_OF_TOKENS
+    # Build the target grid with all zeros except a one at the expected output
+    targets: np.ndarray = np.zeros(NO_OF_TOKENS)
     targets[expected_output] = 1
 
-    # Calculate the errors
-    errors: list[float] = [
-        probability - target for probability, target in zip(scores_raise_by_e, targets)
-    ]
+    # Calculate the errors for every output at once
+    errors: np.ndarray = probabilities - targets
 
-    for i in range(NO_OF_TOKENS):
-        for j in range(NO_OF_HIDDEN_NEURONS):
-            output_weights[i][j] = (
-                output_weights[i][j] - errors[i] * LEARNING_RATE * hidden_values[j]
-            )
+    # Step 7: adjust output weights.
+    # Every (token, hidden neuron) weight is nudged in one grid
+    # operation instead of a pair of nested loops.
+    output_weights -= LEARNING_RATE * np.outer(errors, hidden_values)
 
-    # Step 7: backpropagate errors to hidden layer
-    hidden_errors = []
-    for j in range(NO_OF_HIDDEN_NEURONS):
-        # if a hidden neuron's output was clipped to zero,
-        # its error should also be zero since it didn't
-        # contribute anything.
-        if hidden_values[j] == 0:
-            hidden_errors.append(0)
-        else:
-            error_sum = 0
-            for i in range(NO_OF_TOKENS):
-                error_sum += errors[i] * output_weights[i][j]
-            hidden_errors.append(error_sum)
+    # Step 8: backpropagate errors to hidden layer, all neurons at once
+    hidden_errors: np.ndarray = errors @ output_weights
+    # if a hidden neuron's output was clipped to zero,
+    # its error should also be zero since it didn't
+    # contribute anything.
+    hidden_errors = np.where(hidden_values == 0, 0.0, hidden_errors)
 
-    # Step 8: adjust hidden weights
-    for j in range(NO_OF_HIDDEN_NEURONS):
-        for k in range(CONTEXT_WINDOW):
-            hidden_weights[j][k] = (
-                hidden_weights[j][k]
-                - hidden_errors[j] * LEARNING_RATE * encoded_inputs[k]
-            )
+    # Step 9: adjust hidden weights, same grid trick as step 7
+    hidden_weights -= LEARNING_RATE * np.outer(hidden_errors, encoded_inputs)
 
 
 def generate(seed_text, hidden_weights, output_weights, length=20):
@@ -84,6 +66,7 @@ def generate(seed_text, hidden_weights, output_weights, length=20):
         hidden_values, output_scores = forward(current, hidden_weights, output_weights)
         next_token = predict(output_scores)
         result += idx_to_char[next_token]
+        # slide the context window forward by one token
         current = current[1:] + [next_token]
 
     return result
@@ -101,7 +84,8 @@ def main() -> None:
     # Test every pair
     for input_tokens, expected in pairs:
         _, scores = forward(input_tokens, hidden_weights, output_weights)
-        predicted = idx_to_char[scores.index(max(scores))]
+        # pick the token with the highest score
+        predicted = idx_to_char[int(scores.argmax())]
         expected_char = idx_to_char[expected]
         print(f"Expected: {expected_char}, Got: {predicted}")
 
