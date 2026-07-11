@@ -106,7 +106,7 @@ def main() -> None:
         # pick the token with the highest score
         predicted = idx_to_char[int(scores.argmax())]
         expected_char = idx_to_char[expected]
-        print(f"Expected: {expected_char}, Got: {predicted}")
+        # print(f"Expected: {expected_char}, Got: {predicted}")
 
     print(generate("hello wo", hidden_weights, output_weights))
 
