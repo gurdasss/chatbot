@@ -1,4 +1,5 @@
 from random import uniform, random
+from math import exp
 
 MAX_WEIGHT: float = 0.5
 MIN_WEIGHT: float = -0.5
@@ -66,10 +67,11 @@ def predict(output_scores: list[float]) -> int:
     # Probabilities can't be negative and so, we need to convert it to
     # positive first with softmax method
 
+    max_score = max(output_scores)
     # Step 1: `e`(2.718) to the power of each score
-    scores_raise_by_e: list[float] = list(
-        map(lambda score: 2.718**score, output_scores)
-    )
+    scores_raise_by_e: list[float] = [exp(score - max_score) for score in output_scores]
+
+    # scores_raise_by_e = list(map(lambda score: 2.718**score, output_scores))
     # Step 2: accumulate into final sum
     final_sum: float = sum(scores_raise_by_e)
     # Step 3: divide the list by the final sum
