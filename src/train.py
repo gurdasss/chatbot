@@ -105,7 +105,7 @@ def main() -> None:
         expected_char = idx_to_char[expected]
         print(f"Expected: {expected_char}, Got: {predicted}")
 
-    print(generate("how are ", hidden_weights, output_weights))
+    print(generate("i am doi", hidden_weights, output_weights))
 
 
 if __name__ == "__main__":
