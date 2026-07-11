@@ -15,6 +15,7 @@ from src.persistence import load_weights, save_weights
 
 LEARNING_RATE: float = 0.0001
 MODEL_FILE: str = "model.json"
+TRAINING_DATA_FILE: str = "training_data.txt"
 
 
 def train_one_example(
@@ -77,7 +78,9 @@ def generate(seed_text, hidden_weights, output_weights, length=20):
 
 
 def main() -> None:
-    text = "hello how are you-i am doing well thank you-how is your day going-my day is going great-what do you like to do-i like to read and code-that sounds like fun-it is really fun indeed"
+    # all training text lives in this file, one source of truth to edit
+    with open(TRAINING_DATA_FILE) as f:
+        text = f.read()
     pairs = make_pairs(text)
 
     if os.path.exists(MODEL_FILE):
