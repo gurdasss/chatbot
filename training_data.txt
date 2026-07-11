@@ -1,0 +1,508 @@
+how are you doing today-i am doing really well
+what is your name-my name is sam
+do you like coding-yes i love building things
+where are you from-i am from a small town
+what did you eat today-i had rice and vegetables
+tell me something fun-i saw a funny cat video
+are you busy right now-no i am free to talk
+what do you do for work-i work as a developer
+what is your schedule like-i have plenty of time
+are you having a good day-i am doing really well
+what is up with you-i am okay thank you
+are you working from home-i really love my job
+do you sing in the shower-i sing very loudly at home
+do you enjoy programming tasks-i write python code mostly
+tell me a good story-i read a good science book
+what did you read today-the sky is very blue today
+who is your favorite singer-i love loud heavy rock music
+what genre do you prefer-my favorite movie is very old
+do you want a pet bird-i love all fluffy animals
+do you own a dog-i have a small dog
+can we meet up soon-i am going for a long walk
+are you having a good day-i am feeling very happy
+share a fun fact please-my dog did a silly trick
+who is your favorite singer-i listen to loud pop music
+what should we eat tonight-i love eating spicy dishes
+can you tell me your name-my name is taylor
+did it rain last night-it is very sunny today
+where do you work now-i work as a developer
+where did you grow up-i moved here last year
+what is your schedule like-yes ask me anything please
+is it going to snow later-it is a bit cold
+what is on your schedule-i plan to read some books
+what did you cook today-i had rice and vegetables
+how many pets do you have-my family has a small bird
+can we talk right now-sure i can talk now
+do you have a nickname-my name is taylor
+how is the weather today-there are many clouds today
+what will you do tomorrow-i plan to read some books
+do you know any jokes-i read a good science book
+did you eat anything good-let us get some fresh tacos
+are you doing well today-i am okay thank you
+where do you live now-i am from the mountains
+are you doing anything fun later-i am meeting my best friends
+what is your full name-my friends call me jamie
+do you like coding-i am learning to code now
+do you build websites often-i am learning to code now
+how is everything with you-everything is great right now
+what is on your schedule-i am meeting my best friends
+are you busy right now-i have plenty of time
+what languages do you code in-yes i love building things
+where are you going later-we will watch a new movie
+where is your home town-i am from a small town
+how do you feel now-i am okay thank you
+tell me a good story-i learned a new magic trick
+can we talk right now-no i am free to talk
+how is everything with you-i am doing really well
+are you doing well today-i am doing fine thanks
+do you like coding-yes programming is very fun
+what is your current job-i work nine to five daily
+are you doing well today-i feel great today
+can i ask you something-i am taking a small break
+can we talk right now-yes we can talk now
+do you like spicy food-i ate some fresh fruit
+do you enjoy programming tasks-i enjoy writing new software
+do you have any pets-i love all fluffy animals
+do you like cats or dogs-i love all fluffy animals
+do you have a minute-i have some free time
+do you play any instruments-i listen to loud pop music
+do you have a fun fact-i saw a funny cat video
+is it going to snow later-yes the ground is wet outside
+how strong is the wind-the weather is very nice
+what did you read today-i heard a really funny joke
+what made you laugh today-i learned a new magic trick
+what kind of music do you like-i never listen to the radio
+do you enjoy your career-i drive a delivery truck
+how many pets do you have-i do not have any pets
+what country are you from-i have lived here forever
+how is the weather today-the wind is blowing hard
+what are your work hours-i am a school teacher
+what is something interesting-i learned a new magic trick
+is it raining outside now-yes the ground is wet outside
+are you hungry right now-let us get some fresh tacos
+what do you do for work-yes i work from my house
+where do you work now-i work in a big bank
+what did you cook today-i ate a big sandwich
+did it rain last night-yes the ground is wet outside
+how are you doing today-not much just relaxing here
+share a fun fact please-i heard a really funny joke
+what is your current job-i work in a big bank
+what is on your schedule-i am going for a long walk
+do you play any instruments-i can play the acoustic guitar
+what is your dogs name-my family has a small bird
+is it going to snow later-it might snow this evening
+where is your home town-i moved here last year
+do you have any pets-i have three small fish
+are you going to the cinema-my favorite movie is very old
+what kind of music do you like-i listen to new music daily
+how strong is the wind-it is very sunny today
+are you doing well today-i am feeling very happy
+where do you work now-yes i work from my house
+what is your name-everyone calls me morgan
+are you local to this town-my home is near here
+how is your day going-i am doing really well
+what did you cook today-i ate some fresh fruit
+may i know your name-my friends call me jamie
+are you having a good day-everything is great right now
+where are you going later-i am meeting my best friends
+did you eat anything good-yes i am very hungry
+are you free this afternoon-i am not busy today
+may i know your name-my name is sam
+are you doing anything fun later-yes let us meet tomorrow
+what is up with you-i am doing fine thanks
+are you busy right now-i have some free time
+what pet do you have-i have three small fish
+do you have any pets-i have a small dog
+do you make games too-yes i love building things
+are you free this afternoon-yes we can talk now
+what pet do you have-i do not have any pets
+can i ask you something-i have plenty of time
+what is the temperature outside-it is a bit cold
+what country are you from-i grew up far away
+is it going to snow later-the weather is very nice
+do you watch documentaries often-yes it was very exciting
+what did you read today-i read a good science book
+what country are you from-i am from a small town
+what genre do you prefer-i really like scary horror movies
+do you enjoy your career-i really love my job
+what kind of work do you do-i work nine to five daily
+do you sing in the shower-i listen to loud pop music
+where did you grow up-my home is near here
+are you going out tonight-i have to clean my entire room
+what is something interesting-penguins can swim very fast
+what city are you from-i moved here last year
+are you local to this town-i am from a small town
+what will you do tomorrow-i am going for a long walk
+what should we eat tonight-i ate some fresh fruit
+are you hungry right now-i had a slice of pizza
+do you have a fun fact-i heard a really funny joke
+what kind of work do you do-i really love my job
+how strong is the wind-the wind is blowing hard
+do you enjoy programming tasks-yes programming is very fun
+how is your day going-i feel great today
+how is your day going-not much just relaxing here
+are you free this afternoon-no i am free to talk
+how strong is the wind-it is raining quite hard
+how is your day going-i am feeling very happy
+what city are you from-i grew up far away
+where do you work now-i am a graphic designer
+can we meet up soon-yes let us meet tomorrow
+do you sing in the shower-i love loud heavy rock music
+do you feel good today-i feel great today
+do you own a dog-my family has a small bird
+who is your favorite actor-my favorite movie is very old
+how is the weather today-it might snow this evening
+do you like the weather-it is raining quite hard
+do you like coding-i write python code mostly
+what are your weekend plans-i will go to sleep soon
+did it rain last night-there are many clouds today
+do you have a minute-sure i can talk now
+what languages do you code in-yes programming is very fun
+where are you going later-i am going for a long walk
+are you an animal person-my dogs name is lucky
+who is your favorite actor-yes it was very exciting
+what do people call you-my friends call me jamie
+are you doing well today-i am having a nice day
+do you like action films-i do not have one favorite
+what is your job title-i work nine to five daily
+what pet do you have-i own two black cats
+are you working hard today-i am not busy today
+are you hungry right now-i cooked some hot soup
+what should we eat tonight-i had rice and vegetables
+do you listen to jazz-i listen to new music daily
+what did you read today-i learned a new magic trick
+who is your favorite singer-i go to concerts every month
+do you like cats or dogs-i do not have any pets
+do you build websites often-i write python code mostly
+how is everything with you-i am okay thank you
+do you watch documentaries often-i watch movies every single week
+what was your meal today-i had a slice of pizza
+who is your favorite actor-i do not have one favorite
+are you an animal person-i have a small dog
+what was your meal today-i ate a big sandwich
+how strong is the wind-it might snow this evening
+what is your schedule like-yes we can talk now
+what languages do you code in-i build web applications often
+do you play any instruments-classical music is very relaxing
+how is your morning going-i am doing fine thanks
+are you working from home-i work as a developer
+are you working hard today-sure i can talk now
+how should i address you-my name is sam
+are you busy right now-i am not busy today
+are you working from home-i drive a delivery truck
+can we talk right now-i have plenty of time
+what kind of work do you do-yes i work from my house
+do you have a minute-yes ask me anything please
+do you like cats or dogs-i have a small dog
+what should we eat tonight-let us get some fresh tacos
+do you like coding-it is my favorite hobby
+how are you doing today-everything is great right now
+what is your current job-i really love my job
+do you like coding-i enjoy writing new software
+do you have plans tonight-yes let us meet tomorrow
+did you eat anything good-i ate some fresh fruit
+are you busy right now-yes we can talk now
+what kind of music do you like-i love loud heavy rock music
+do you make games too-i code every single day
+what do people call you-i go by the name riley
+where are you from-i am from the mountains
+what is your name-my name is taylor
+what do you do for work-i am a school teacher
+may i know your name-i am alex
+how is your day going-i am having a nice day
+what are your weekend plans-i am going for a long walk
+is coding fun for you-yes programming is very fun
+how is everything with you-my day is going well
+is coding fun for you-yes i love building things
+what was your meal today-let us get some fresh tacos
+what do you do for work-i work nine to five daily
+what is your schedule like-i have some free time
+do you have a minute-yes we can talk now
+do you have time today-no i am free to talk
+how should i address you-i am alex
+what pet do you have-my dogs name is lucky
+what is your name-you can call me chris
+what pet do you have-i want to get a puppy
+do you like the weather-it is a bit cold
+are you going to the cinema-no i prefer reading long books
+do you listen to jazz-classical music is very relaxing
+what genre do you prefer-yes it was very exciting
+do you live around here-i have lived here forever
+do you watch documentaries often-my favorite movie is very old
+how is your morning going-i am having a nice day
+did you see the new movie-i do not have one favorite
+are you doing anything fun later-i am staying home tonight
+do you play any instruments-i listen to new music daily
+do you build websites often-i build web applications often
+are you local to this town-i have lived here forever
+how is the weather today-it is raining quite hard
+are you going out tonight-i am staying home tonight
+what was your meal today-i love eating spicy dishes
+what is your favorite film-my favorite movie is very old
+what languages do you code in-i am learning to code now
+can i ask you something-i am not busy today
+do you have plans tonight-i am staying home tonight
+what did you read today-i can juggle three apples
+do you have plans tonight-we will watch a new movie
+how is the weather today-the weather is very nice
+what are your work hours-i drive a delivery truck
+what city are you from-i am from the mountains
+can we meet up soon-i will go to sleep soon
+how should i address you-my name is taylor
+what city are you from-i have lived here forever
+what is something interesting-the sky is very blue today
+what did you cook today-yes i am very hungry
+do you have a nickname-my name is sam
+what are your work hours-i am a graphic designer
+is coding fun for you-i am learning to code now
+are you busy right now-no i am free to talk
+share a fun fact please-the sky is very blue today
+do you know any jokes-i saw a funny cat video
+do you listen to the radio-i can play the acoustic guitar
+do you build websites often-yes i love building things
+what did you eat today-i ate some fresh fruit
+do you write code often-i code every single day
+do you live around here-i live just down the street
+did you see the new movie-no i prefer reading long books
+what should we eat tonight-i ate a big sandwich
+what is on your schedule-i have to clean my entire room
+do you enjoy your career-i am a graphic designer
+do you listen to the radio-i go to concerts every month
+where did you grow up-i am from the mountains
+what did you read today-i saw a funny cat video
+where are you going later-i plan to read some books
+what is your favorite film-yes it was very exciting
+is it sunny out there-the wind is blowing hard
+what is your favorite song-i go to concerts every month
+do you listen to the radio-classical music is very relaxing
+what is your full name-my name is taylor
+what is something interesting-i heard a really funny joke
+what pet do you have-i love all fluffy animals
+how strong is the wind-there are many clouds today
+do you have any pets-i own two black cats
+where are you from-my home is near here
+do you watch documentaries often-i do not have one favorite
+what kind of work do you do-i am a graphic designer
+do you own a dog-my dogs name is lucky
+what is your current job-i am a school teacher
+how do you feel now-everything is great right now
+share a fun fact please-i saw a funny cat video
+what is the temperature outside-it is very sunny today
+who are you today-you can call me chris
+what do people call you-they call me jordan
+what is your schedule like-i am not busy today
+what do people call you-everyone calls me morgan
+do you have plans tonight-i am meeting my best friends
+do you enjoy programming tasks-it is my favorite hobby
+do you live around here-i moved here last year
+is it raining outside now-it is very sunny today
+how is everything with you-i am having a nice day
+what is your name-my friends call me jamie
+is it going to snow later-it is very sunny today
+tell me something fun-the sky is very blue today
+what kind of work do you do-i work in a big bank
+did you eat anything good-i cooked some hot soup
+are you free this afternoon-yes ask me anything please
+do you watch documentaries often-no i prefer reading long books
+do you write code often-yes programming is very fun
+do you watch documentaries often-documentaries are my absolute favorite
+do you like spicy food-i love eating spicy dishes
+do you like the weather-there are many clouds today
+did you see the new movie-i watch movies every single week
+are you a programmer-it is my favorite hobby
+do you watch many movies-no i prefer reading long books
+what did you eat today-let us get some fresh tacos
+do you make games too-i build web applications often
+where do you work now-i am a school teacher
+what did you cook today-i cooked some hot soup
+what is your favorite song-i love loud heavy rock music
+how many pets do you have-i have three small fish
+where are you from-i moved here last year
+are you working hard today-no i am free to talk
+do you have time today-i have plenty of time
+are you working hard today-yes ask me anything please
+do you like coding-i build web applications often
+do you make games too-i write python code mostly
+do you like action films-i really like scary horror movies
+what is your favorite film-i love watching comedy films
+are you going to the cinema-i love watching comedy films
+is it sunny out there-the weather is very nice
+is it going to snow later-there are many clouds today
+do you feel good today-i am doing really well
+tell me something fun-my dog did a silly trick
+do you want a pet bird-i own two black cats
+what is something interesting-i can juggle three apples
+what genre do you prefer-i watch movies every single week
+do you have time today-yes ask me anything please
+do you have time today-yes we can talk now
+what is the temperature outside-yes the ground is wet outside
+what are your weekend plans-we will watch a new movie
+are you local to this town-i live in the big city
+what is your favorite song-i listen to new music daily
+do you know any jokes-penguins can swim very fast
+do you have a minute-i am taking a small break
+do you have a nickname-i am alex
+who are you today-my name is sam
+what did you cook today-i love eating spicy dishes
+do you build websites often-i enjoy writing new software
+can we talk right now-yes ask me anything please
+do you live around here-i am from the mountains
+what was your meal today-yes i am very hungry
+do you sing in the shower-i listen to new music daily
+are you a programmer-i am learning to code now
+do you enjoy programming tasks-i am learning to code now
+what are your weekend plans-yes let us meet tomorrow
+are you doing anything fun later-i will go to sleep soon
+do you have plans tonight-i will go to sleep soon
+what made you laugh today-penguins can swim very fast
+what is your current job-i am a graphic designer
+did you eat anything good-i had rice and vegetables
+are you going out tonight-i will go to sleep soon
+do you have a nickname-you can call me chris
+what do you do for work-i work in a big bank
+how is your day going-everything is great right now
+do you like action films-i love watching comedy films
+what is your favorite film-documentaries are my absolute favorite
+are you an animal person-i love all fluffy animals
+tell me a good story-i heard a really funny joke
+do you live around here-my home is near here
+do you like spicy food-let us get some fresh tacos
+what genre do you prefer-documentaries are my absolute favorite
+tell me a good story-the sky is very blue today
+do you like the weather-it might snow this evening
+did you see the new movie-yes it was very exciting
+do you like the weather-the weather is very nice
+do you make games too-yes programming is very fun
+who are you today-i am alex
+tell me something fun-i saw a funny cat video
+do you know any jokes-my dog did a silly trick
+did you see the new movie-i really like scary horror movies
+what do people call you-my name is taylor
+what will you do tomorrow-we will watch a new movie
+is coding fun for you-it is my favorite hobby
+are you an animal person-i do not have any pets
+who are you today-my friends call me jamie
+what do people call you-my name is sam
+what are your work hours-i work nine to five daily
+what are your weekend plans-i am meeting my best friends
+do you build websites often-it is my favorite hobby
+did it rain last night-it is a bit cold
+what is something interesting-my dog did a silly trick
+do you watch documentaries often-i really like scary horror movies
+do you have a nickname-everyone calls me morgan
+are you working from home-i work in a big bank
+share a fun fact please-i read a good science book
+tell me something fun-i heard a really funny joke
+where are you from-i live in the big city
+can we meet up soon-we will watch a new movie
+what made you laugh today-i saw a funny cat video
+can you tell me your name-they call me jordan
+how is your day going-my day is going well
+where are you from-i grew up far away
+can you tell me your name-i am alex
+what are your work hours-i work in a big bank
+what is your full name-my name is sam
+what pet do you have-my family has a small bird
+what made you laugh today-my dog did a silly trick
+are you hungry right now-i ate some fresh fruit
+do you make games too-i am learning to code now
+what did you have for lunch-yes i am very hungry
+what is your favorite song-i can play the acoustic guitar
+is coding fun for you-i enjoy writing new software
+are you having a good day-i am having a nice day
+what is your job title-i drive a delivery truck
+what kind of music do you like-i go to concerts every month
+do you have a fun fact-i learned a new magic trick
+are you working hard today-i have some free time
+is coding fun for you-i build web applications often
+how do you feel now-i am doing fine thanks
+are you busy right now-yes ask me anything please
+what languages do you code in-i code every single day
+are you a programmer-i enjoy writing new software
+what will you do tomorrow-i have to clean my entire room
+what pet do you have-i have a small dog
+who is your favorite singer-i listen to new music daily
+what is up with you-my day is going well
+are you free this afternoon-i have plenty of time
+did you eat anything good-i ate a big sandwich
+what is your current job-i work as a developer
+how do you feel now-i am doing really well
+what did you eat today-i love eating spicy dishes
+what is up with you-i am feeling very happy
+what is something interesting-i saw a funny cat video
+how is everything with you-i am doing fine thanks
+do you watch many movies-i watch movies every single week
+what is your current job-yes i work from my house
+what did you have for lunch-i love eating spicy dishes
+do you enjoy live concerts-i love loud heavy rock music
+tell me a good story-i saw a funny cat video
+what did you have for lunch-i ate a big sandwich
+what city are you from-i live in the big city
+what genre do you prefer-no i prefer reading long books
+how is the weather today-it is a bit cold
+how is the weather today-yes the ground is wet outside
+do you like spicy food-yes i am very hungry
+do you feel good today-my day is going well
+are you going out tonight-i plan to read some books
+what kind of music do you like-i listen to loud pop music
+how are you doing today-i feel great today
+how do you feel now-i am feeling very happy
+where are you going later-i am staying home tonight
+can we talk right now-i am taking a small break
+do you want a pet bird-my family has a small bird
+do you watch many movies-i do not have one favorite
+are you having a good day-i am doing fine thanks
+how do you feel now-not much just relaxing here
+is it sunny out there-it is a bit cold
+how many pets do you have-i want to get a puppy
+do you like action films-documentaries are my absolute favorite
+do you live around here-i live in the big city
+are you doing anything fun later-i have to clean my entire room
+do you have a minute-i am not busy today
+do you like spicy food-i had a slice of pizza
+do you have a fun fact-my dog did a silly trick
+who is your favorite singer-i can play the acoustic guitar
+what is your favorite song-i never listen to the radio
+do you play any instruments-i go to concerts every month
+may i know your name-they call me jordan
+what was your meal today-i ate some fresh fruit
+how should i address you-everyone calls me morgan
+how should i address you-they call me jordan
+what is up with you-i am having a nice day
+what is your job title-i am a school teacher
+what made you laugh today-the sky is very blue today
+how is your morning going-i am doing really well
+can i ask you something-yes ask me anything please
+is it raining outside now-the wind is blowing hard
+do you like the weather-yes the ground is wet outside
+do you feel good today-everything is great right now
+can i ask you something-no i am free to talk
+are you having a good day-not much just relaxing here
+tell me something fun-i can juggle three apples
+are you a programmer-yes i love building things
+what did you have for lunch-i cooked some hot soup
+can we talk right now-i have some free time
+tell me something fun-i learned a new magic trick
+do you enjoy your career-i am a school teacher
+do you play any instruments-i love loud heavy rock music
+what should we eat tonight-yes i am very hungry
+what are your work hours-yes i work from my house
+are you hungry right now-i had rice and vegetables
+are you a programmer-i code every single day
+what is something interesting-i read a good science book
+what did you eat today-yes i am very hungry
+are you free this afternoon-i have some free time
+where are you going later-yes let us meet tomorrow
+what is your dogs name-i love all fluffy animals
+do you like coding-yes i love building things
+what languages do you code in-i enjoy writing new software
+what is your full name-you can call me chris
+can i ask you something-i have some free time
+are you doing well today-not much just relaxing here
+can i ask you something-yes we can talk now
+is coding fun for you-i code every single day
+what is your job title-i am a graphic designer
+what is your favorite film-i really like scary horror movies
+do you listen to jazz-i sing very loudly at home
+do you live around here-i grew up far away
+may i know your name-you can call me chris

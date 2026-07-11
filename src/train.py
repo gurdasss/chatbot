@@ -78,9 +78,10 @@ def generate(seed_text, hidden_weights, output_weights, length=20):
 
 
 def main() -> None:
-    # all training text lives in this file, one source of truth to edit
+    # all training text lives in this file, one line per example. The
+    # vocabulary has no newline token, so join lines with a space instead.
     with open(TRAINING_DATA_FILE) as f:
-        text = f.read()
+        text = " ".join(line.strip() for line in f if line.strip())
     pairs = make_pairs(text)
 
     if os.path.exists(MODEL_FILE):
