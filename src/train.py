@@ -23,7 +23,7 @@ def train_one_example(
     expected_output: int,
     hidden_weights: np.ndarray,
     output_weights: np.ndarray,
-) -> bool:
+) -> tuple[bool, float]:
     hidden_values, output_scores = forward(
         encoded_inputs, hidden_weights, output_weights
     )
@@ -31,7 +31,7 @@ def train_one_example(
     # Catch blown-up weights early instead of finding out at the end
     if np.isnan(output_scores).any():
         print("NaN detected, stopping training")
-        return True
+        return True, float("nan")
 
     # Right now the output scores can be negative, zero, or positive
     # Probabilities can't be negative and so, we need to convert it to
@@ -53,6 +53,7 @@ def train_one_example(
     errors: np.ndarray = probabilities - targets
     # Cap the error signal so one example can't blow up the weights
     errors = np.clip(errors, -1.0, 1.0)
+    loss = np.mean(errors**2)
 
     # Step 7: adjust output weights.
     # Every (token, hidden neuron) weight is nudged in one grid
@@ -69,7 +70,7 @@ def train_one_example(
     # Step 9: adjust hidden weights, same grid trick as step 7
     hidden_weights -= LEARNING_RATE * np.outer(hidden_errors, encoded_inputs)
 
-    return False
+    return False, loss
 
 
 def generate(seed_text, hidden_weights, output_weights, length=20):
@@ -100,14 +101,18 @@ def main() -> None:
     else:
         hidden_weights, output_weights = init_weights()
 
-        for _ in range(2000):
+        for iteration in range(600):
             stop_training = False
+            losses = []
             for input_tokens, expected in pairs:
-                stop_training = train_one_example(
+                stop_training, loss = train_one_example(
                     input_tokens, expected, hidden_weights, output_weights
                 )
+                losses.append(loss)
                 if stop_training:
                     break
+            if iteration % 100 == 0:
+                print(f"Iteration {iteration}: loss={np.mean(losses):.4f}")
             if stop_training:
                 break
 
@@ -123,7 +128,7 @@ def main() -> None:
         expected_char = idx_to_char[expected]
         # print(f"Expected: {expected_char}, Got: {predicted}")
 
-    print(generate("hello wo", hidden_weights, output_weights))
+    print(generate("what is ", hidden_weights, output_weights))
 
 
 if __name__ == "__main__":
