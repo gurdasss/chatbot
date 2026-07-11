@@ -89,7 +89,9 @@ def main() -> None:
 
         for _ in range(2000):
             for input_tokens, expected in pairs:
-                train_one_example(input_tokens, expected, hidden_weights, output_weights)
+                train_one_example(
+                    input_tokens, expected, hidden_weights, output_weights
+                )
 
         # persist the trained weights so future runs can skip training
         save_weights(hidden_weights, output_weights, MODEL_FILE)
@@ -103,7 +105,7 @@ def main() -> None:
         expected_char = idx_to_char[expected]
         print(f"Expected: {expected_char}, Got: {predicted}")
 
-    print(generate("i am doi", hidden_weights, output_weights))
+    print(generate("hello wo", hidden_weights, output_weights))
 
 
 if __name__ == "__main__":
