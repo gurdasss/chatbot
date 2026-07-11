@@ -13,7 +13,7 @@ from src.network import (
 )
 from src.persistence import load_weights, save_weights
 
-LEARNING_RATE: float = 0.0001
+LEARNING_RATE: float = 0.00001
 MODEL_FILE: str = "model.json"
 TRAINING_DATA_FILE: str = "training_data.txt"
 
@@ -23,10 +23,15 @@ def train_one_example(
     expected_output: int,
     hidden_weights: np.ndarray,
     output_weights: np.ndarray,
-) -> None:
+) -> bool:
     hidden_values, output_scores = forward(
         encoded_inputs, hidden_weights, output_weights
     )
+
+    # Catch blown-up weights early instead of finding out at the end
+    if np.isnan(output_scores).any():
+        print("NaN detected, stopping training")
+        return True
 
     # Right now the output scores can be negative, zero, or positive
     # Probabilities can't be negative and so, we need to convert it to
@@ -46,6 +51,8 @@ def train_one_example(
 
     # Calculate the errors for every output at once
     errors: np.ndarray = probabilities - targets
+    # Cap the error signal so one example can't blow up the weights
+    errors = np.clip(errors, -1.0, 1.0)
 
     # Step 7: adjust output weights.
     # Every (token, hidden neuron) weight is nudged in one grid
@@ -61,6 +68,8 @@ def train_one_example(
 
     # Step 9: adjust hidden weights, same grid trick as step 7
     hidden_weights -= LEARNING_RATE * np.outer(hidden_errors, encoded_inputs)
+
+    return False
 
 
 def generate(seed_text, hidden_weights, output_weights, length=20):
@@ -92,10 +101,15 @@ def main() -> None:
         hidden_weights, output_weights = init_weights()
 
         for _ in range(2000):
+            stop_training = False
             for input_tokens, expected in pairs:
-                train_one_example(
+                stop_training = train_one_example(
                     input_tokens, expected, hidden_weights, output_weights
                 )
+                if stop_training:
+                    break
+            if stop_training:
+                break
 
         # persist the trained weights so future runs can skip training
         save_weights(hidden_weights, output_weights, MODEL_FILE)
