@@ -177,6 +177,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Trained model weights
+model.json
+
 # pytype static type analyzer
 .pytype/
 

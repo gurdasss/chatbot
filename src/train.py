@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 
 from src.codec import encode, idx_to_char
@@ -9,8 +11,10 @@ from src.network import (
     init_weights,
     predict,
 )
+from src.persistence import load_weights, save_weights
 
 LEARNING_RATE: float = 0.0001
+MODEL_FILE: str = "model.json"
 
 
 def train_one_example(
@@ -73,13 +77,23 @@ def generate(seed_text, hidden_weights, output_weights, length=20):
 
 
 def main() -> None:
-    hidden_weights, output_weights = init_weights()
     text = "hello how are you-i am doing well thank you-how is your day going-my day is going great-what do you like to do-i like to read and code-that sounds like fun-it is really fun indeed"
     pairs = make_pairs(text)
 
-    for _ in range(2000):
-        for input_tokens, expected in pairs:
-            train_one_example(input_tokens, expected, hidden_weights, output_weights)
+    if os.path.exists(MODEL_FILE):
+        # reuse a previously trained model instead of starting from scratch
+        print(f"Loading weights from {MODEL_FILE}")
+        hidden_weights, output_weights = load_weights(MODEL_FILE)
+    else:
+        hidden_weights, output_weights = init_weights()
+
+        for _ in range(2000):
+            for input_tokens, expected in pairs:
+                train_one_example(input_tokens, expected, hidden_weights, output_weights)
+
+        # persist the trained weights so future runs can skip training
+        save_weights(hidden_weights, output_weights, MODEL_FILE)
+        print(f"Saved weights to {MODEL_FILE}")
 
     # Test every pair
     for input_tokens, expected in pairs:
