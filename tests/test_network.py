@@ -1,5 +1,7 @@
 from unittest.mock import patch
 
+import numpy as np
+
 from src.network import (
     CONTEXT_WINDOW,
     MAX_WEIGHT,
@@ -21,22 +23,16 @@ def test_init_weights_returns_two_lists():
 
 def test_hidden_weights_shape():
     hidden_weights, _ = init_weights()
-    assert len(hidden_weights) == NO_OF_HIDDEN_NEURONS
-    assert len(hidden_weights) == 64
-    for neuron_weights in hidden_weights:
-        assert isinstance(neuron_weights, list)
-        assert len(neuron_weights) == CONTEXT_WINDOW
-        assert len(neuron_weights) == 8
+    assert isinstance(hidden_weights, np.ndarray)
+    assert hidden_weights.shape == (NO_OF_HIDDEN_NEURONS, CONTEXT_WINDOW)
+    assert hidden_weights.shape == (64, 8)
 
 
 def test_output_weights_shape():
     _, output_weights = init_weights()
-    assert len(output_weights) == NO_OF_TOKENS
-    assert len(output_weights) == 28
-    for neuron_weights in output_weights:
-        assert isinstance(neuron_weights, list)
-        assert len(neuron_weights) == NO_OF_HIDDEN_NEURONS
-        assert len(neuron_weights) == 64
+    assert isinstance(output_weights, np.ndarray)
+    assert output_weights.shape == (NO_OF_TOKENS, NO_OF_HIDDEN_NEURONS)
+    assert output_weights.shape == (28, 64)
 
 
 def test_all_hidden_weights_within_bounds():
@@ -69,8 +65,8 @@ def test_weights_are_randomized_not_constant():
 def test_successive_calls_produce_different_weights():
     first_hidden, first_output = init_weights()
     second_hidden, second_output = init_weights()
-    assert first_hidden != second_hidden
-    assert first_output != second_output
+    assert not np.array_equal(first_hidden, second_hidden)
+    assert not np.array_equal(first_output, second_output)
 
 
 def test_gen_weights_returns_requested_count_within_bounds():
@@ -80,7 +76,7 @@ def test_gen_weights_returns_requested_count_within_bounds():
 
 
 def test_gen_weights_zero_length():
-    assert gen_weights(0) == []
+    assert len(gen_weights(0)) == 0
 
 
 def test_forward_output_shapes_with_real_weights():
@@ -107,8 +103,8 @@ def test_forward_computes_correct_dot_products():
 
     hidden_values, output_scores = forward(inputs, hidden_weights, output_weights)
 
-    assert hidden_values == [1.0, 5.0]  # [1*1, 2*1 + 3*1]
-    assert output_scores == [6.0, 2.0]  # [1+5, 2*1]
+    assert np.array_equal(hidden_values, [1.0, 5.0])  # [1*1, 2*1 + 3*1]
+    assert np.array_equal(output_scores, [6.0, 2.0])  # [1+5, 2*1]
 
 
 def test_forward_all_zero_inputs_produce_zero_scores():
@@ -117,8 +113,8 @@ def test_forward_all_zero_inputs_produce_zero_scores():
 
     hidden_values, output_scores = forward(inputs, hidden_weights, output_weights)
 
-    assert hidden_values == [0.0] * NO_OF_HIDDEN_NEURONS
-    assert output_scores == [0.0] * NO_OF_TOKENS
+    assert np.array_equal(hidden_values, [0.0] * NO_OF_HIDDEN_NEURONS)
+    assert np.array_equal(output_scores, [0.0] * NO_OF_TOKENS)
 
 
 def test_forward_returns_hidden_values_and_output_scores_as_tuple():
